@@ -22,7 +22,8 @@ sha256sums=('20a3984f9c044f1a1da3088166b181f3c10380d3efd4bf3fbc64678fef279ced'
 build() {
     cd $srcdir/kubernetes-$pkgver
     
-    ./hack/build-go.sh
+    # In order for this to succeed you will need to chown your system's GO pkg directory!
+    CGO_ENABLED=1 ./hack/build-go.sh
 }
 
 package() {
